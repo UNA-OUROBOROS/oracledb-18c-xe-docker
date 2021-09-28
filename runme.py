@@ -69,7 +69,7 @@ def install_db():
         download_prerequisites()
         build_container()
         create_container()
-    print("NOTE:     the default DB password is 'ORADBXE18c'", flush=True)
+    print("NOTE:     the default DB password is 'ORADBXE18c' and has ssh port on {41061}", flush=True)
 
 
 def uninstall_db():
