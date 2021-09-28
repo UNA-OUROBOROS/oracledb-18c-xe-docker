@@ -57,7 +57,7 @@ def create_container():
     print("creating docker container")
     # add this if you want to expose web -p 5500:5500
     os.system(
-        f"docker run -d  -p 1521:1521 -h {config['container_name']} --name {config['container_name']} oracle-db:18cXE")
+        f"docker run -d -p 41061:22 -p 1521:1521 -h {config['container_name']} --name {config['container_name']} oracle-db:18cXE")
 
 
 def install_db():

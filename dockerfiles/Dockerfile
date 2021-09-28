@@ -36,7 +36,11 @@ RUN cd /install \
 
 
 # EXPOSE 5500
+# Oracle DB
 EXPOSE 1521 
+# SSH
+EXPOSE 22
+
 
 RUN sed -i -e "s/^.*memlock.*//g" /etc/security/limits.d/oracle-database-preinstall-18c.conf \
  && printf ORADBXE18c\\nORADBXE18c\\n  | /etc/init.d/oracle-xe-18c configure
