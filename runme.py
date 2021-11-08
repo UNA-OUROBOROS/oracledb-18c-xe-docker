@@ -59,7 +59,6 @@ def create_container():
     os.system(
         f"docker run -d -p 41061:22 -p 1521:1521 -h {config['container_name']} --name {config['container_name']} oracle-db:18cXE")
 
-
 def install_db():
     if find_container(config["container_name"], shutdown=True):
         print("Oracle Database is already installed.", flush=True)
@@ -108,12 +107,13 @@ def stop_database():
 
 
 options = {
-    "1": install_db,
-    "2": uninstall_db,
-    "3": run_rql_plus,
-    "4": start_database,
-    "5": stop_database,
-    "6": lambda: sys.exit(0)
+    "1": build_container,
+    "2": install_db,
+    "3": uninstall_db,
+    "4": run_rql_plus,
+    "5": start_database,
+    "6": stop_database,
+    "7": lambda: sys.exit(0)
 }
 
 
@@ -125,12 +125,13 @@ def main():
 ----------------------------
 |        MENU              |
 ----------------------------
-1. Install Database
-2. Uninstall Database
-3. SQLPLUS
-4. Start Database
-5. Stop Database
-6. Exit""")
+1. Build Container
+2. Install Database
+3. Uninstall Database
+4. SQLPLUS
+5. Start Database
+6. Stop Database
+7. Exit""")
     print("----------------------------")
     option = input("select option [1-6]: ")
     option = options.get(option, (lambda: print("Invalid option")))
