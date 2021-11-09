@@ -48,9 +48,10 @@ def find_container(container_name, shutdown=False):
     return str(s).find(container_name) != -1
 
 
-def build_container():
+def build_container(cached = False):
     print("building docker image", flush=True)
-    download_prerequisites()
+    if not cached:
+        download_prerequisites()
     os.system("docker build -f dockerfiles/Dockerfile -t oracle-db:18cXE .")
 
 
@@ -70,7 +71,7 @@ def install_db():
         print("installing db", flush=True)
         download_prerequisites()
         build_container(cached=True)
-        create_container()
+        create_container(cached=True)
     print("NOTE:     the default DB password is 'ORADBXE18c' and has ssh port on {41061}", flush=True)
 
 
